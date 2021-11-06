@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppQuanLyHangHoa</string>
+    <string name="nav_list">List</string>
+    <string name="nav_statistical">Statistical</string>
+    <string name="nav_scan">Scan</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_information">Information</string>
+    <string name="nav_sign_out">Sign out</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

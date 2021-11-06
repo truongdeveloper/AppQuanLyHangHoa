@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "395287259020",
+    "firebase_url": "https://quanlyhanghoa-2ab58-default-rtdb.firebaseio.com",
+    "project_id": "quanlyhanghoa-2ab58",
+    "storage_bucket": "quanlyhanghoa-2ab58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395287259020:android:c1488563fd63f27b5418a9",
+        "android_client_info": {
+          "package_name": "com.example.appquanlyhanghoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395287259020-0lbrua5r7qb1v58ncnq8ukut51nl2deb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpEO70DJARUFa18qztr8tWoxGH3rFkSV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395287259020-0lbrua5r7qb1v58ncnq8ukut51nl2deb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
