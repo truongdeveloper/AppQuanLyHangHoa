@@ -53,7 +53,7 @@ public class ScanKit extends AppCompatActivity {
         }
         if (requestCode == REQUEST_CODE_SCAN) {
             Object obj = data.getParcelableExtra(ScanUtil.RESULT);
-//result u will get
+
             if (obj instanceof HmsScan) {
                 if (!TextUtils.isEmpty(((HmsScan) obj).getOriginalValue())) {
                     Toast.makeText(this, ((HmsScan) obj).getOriginalValue(), Toast.LENGTH_SHORT).show();

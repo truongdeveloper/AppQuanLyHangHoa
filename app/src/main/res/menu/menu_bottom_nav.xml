@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item  android:id="@+id/list"
+            android:title="List"
+            android:icon="@drawable/ic_list"/>
+        <item  android:id="@+id/scan"
+            android:title="Scan"
+            android:icon="@drawable/ic_qr"/>
+        <item  android:id="@+id/profile"
+            android:title="User"
+            android:icon="@drawable/ic_profile"/>
+        <item  android:id="@+id/info"
+            android:title="Info"
+            android:icon="@drawable/ic_if"/>
+
+    </group>
+</menu>

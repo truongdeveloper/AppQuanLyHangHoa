@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appquanlyhanghoa">
-
-    <!--check network permissions-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--check wifi state-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <!-- Thêm quyền cho scan -->
+    <!-- check network permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- check wifi state -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Thêm quyền cho scan -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- File read permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -22,16 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppQuanLyHangHoa">
         <activity
-            android:name=".DangNhap"
+            android:name=".InfoActivity"
             android:exported="true" />
         <activity
-            android:name=".ScanKit"
+            android:name=".ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".Menu"
-            android:exported="true" />
-        <activity
-            android:name=".AccountKit"
+            android:name=".ListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ScanKit"
+            android:exported="true" />
+        <activity
+            android:name=".AccountKit"
+            android:exported="true" />
     </application>
 
 </manifest>
