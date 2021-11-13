@@ -3,6 +3,7 @@ package com.example.appquanlyhanghoa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -24,6 +25,7 @@ public class ScanKit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_kit);
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.requestPermissions(
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -42,6 +44,7 @@ public class ScanKit extends AppCompatActivity {
             ScanUtil.startScan(ScanKit.this, REQUEST_CODE_SCAN, new
                     HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE,
                     HmsScan.CODE128_SCAN_TYPE).create());
+            Back();
 
         }
     }
@@ -59,9 +62,13 @@ public class ScanKit extends AppCompatActivity {
                     Toast.makeText(this, ((HmsScan) obj).getOriginalValue(), Toast.LENGTH_SHORT).show();
                     ScanKit.this.finish();
                 }
-                return;
+
             }
         }
 
     }
+    public void Back(){
+        super.onBackPressed();
+    }
+
 }
