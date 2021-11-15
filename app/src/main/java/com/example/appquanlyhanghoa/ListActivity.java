@@ -42,12 +42,12 @@ public class ListActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),ScanKit.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext(),InfoActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.logout:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

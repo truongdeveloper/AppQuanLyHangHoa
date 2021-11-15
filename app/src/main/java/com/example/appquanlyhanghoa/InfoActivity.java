@@ -35,12 +35,11 @@ public class InfoActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),ScanKit.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.profile:
+                    case R.id.info:
+                        return true;
+                    case R.id.logout:
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
-                    case R.id.info:
-
                         return true;
 
                 }

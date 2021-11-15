@@ -21,7 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         BottomNavigationView mNavView = findViewById(R.id.botom_nav);
 
-        mNavView.setSelectedItemId(R.id.profile);
+        mNavView.setSelectedItemId(R.id.logout);
 
         mNavView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -35,11 +35,11 @@ public class ProfileActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),ScanKit.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.profile:
-                        return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext(),InfoActivity.class));
                         overridePendingTransition(0,0);
+                        return true;
+                    case R.id.logout:
                         return true;
 
                 }
