@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_abc.xml" value="0.13854166666666667" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_list.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_main.xml" value="0.15942028985507245" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_main2.xml" value="0.15677083333333333" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_obj.xml" value="0.16875" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/activity_scan_kit.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/dangnhap.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/dialog_addlist.xml" value="0.2" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/dialog_dangnhap.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/fragment_information.xml" value="0.21829710144927536" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/fragment_list.xml" value="0.20425724637681159" />
@@ -15,13 +21,12 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/menu.xml" value="0.21829710144927536" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/menu_header_nav.xml" value="0.21829710144927536" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/menu_nav.xml" value="0.21829710144927536" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/obj_adapter.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/menu.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/layout/menu_header_nav.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/AppQuanLyHangHoa/app/src/main/res/menu/menu_nav.xml" value="0.1796875" />
-        <entry key="..\:/Users/Admin/AppQuanLyHangHoa/app/src/main/res/layout/activity_info.xml" value="0.22" />
-        <entry key="..\:/Users/Admin/AppQuanLyHangHoa/app/src/main/res/layout/activity_profile.xml" value="0.13134057971014493" />
-        <entry key="..\:/Users/Admin/AppQuanLyHangHoa/app/src/main/res/menu/menu_bottom_nav.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AppQuanLyHangHoa/app/src/main/res/layout/activity_info.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/activity_account_kit.xml" value="0.31521739130434784" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.2817028985507246" />
         <entry key="app/src/main/res/layout/activity_list.xml" value="0.2421875" />
