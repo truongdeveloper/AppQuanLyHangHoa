@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/fragment_scan.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/menu.xml" value="0.32518115942028986" />
         <entry key="app/src/main/res/layout/menu_header_nav.xml" value="0.32518115942028986" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/menu/menu_nav.xml" value="0.35572916666666665" />
       </map>
     </option>

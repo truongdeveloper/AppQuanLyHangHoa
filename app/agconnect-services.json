@@ -15,16 +15,16 @@
 		"client_id":"751549904958009728",
 		"client_secret":"13481732755167850159E3449B17BA7363F0F96B2ADC3B26ABB88997F2DA157B",
 		"project_id":"737518067793672184",
-		"app_id":"104903293",
+		"app_id":"104974829",
 		"api_key":"CwEAAAAARN+llGZKxYv5PgtaLLSnxFKkuvRmaI0qZGJERDUXKryQJY2z0t3bEb1M5PXfR+qEyfjYviZ15H4QOkgDLX6+4+7i6fY=",
 		"package_name":"com.example.appquanlyhanghoa"
 	},
 	"oauth_client":{
-		"client_id":"104903293",
+		"client_id":"104974829",
 		"client_type":1
 	},
 	"app_info":{
-		"app_id":"104903293",
+		"app_id":"104974829",
 		"package_name":"com.example.appquanlyhanghoa"
 	},
 	"configuration_version":"3.0",
@@ -32,15 +32,15 @@
 		{
 			"package_name":"com.example.appquanlyhanghoa",
 			"client":{
-				"app_id":"104903293"
+				"app_id":"104974829"
 			},
 			"app_info":{
 				"package_name":"com.example.appquanlyhanghoa",
-				"app_id":"104903293"
+				"app_id":"104974829"
 			},
 			"oauth_client":{
 				"client_type":1,
-				"client_id":"104903293"
+				"client_id":"104974829"
 			}
 		}
 	]

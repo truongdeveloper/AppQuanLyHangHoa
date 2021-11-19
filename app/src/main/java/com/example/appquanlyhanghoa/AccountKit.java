@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.huawei.hmf.tasks.OnFailureListener;
+import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hms.common.ApiException;
 import com.huawei.hms.support.account.AccountAuthManager;
@@ -17,14 +20,16 @@ import com.huawei.hms.support.account.service.AccountAuthService;
 
 public class AccountKit extends AppCompatActivity {
 
+    AccountAuthService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_kit);
 
+
         AccountAuthParams authParams = new AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM).setIdToken().createParams();
-        AccountAuthService service = AccountAuthManager.getService(AccountKit.this, authParams);
+        service = AccountAuthManager.getService(AccountKit.this, authParams);
         startActivityForResult(service.getSignInIntent(), 8888);
 
     }
@@ -35,8 +40,8 @@ public class AccountKit extends AppCompatActivity {
         if (requestCode == 8888) {
             Task<AuthAccount> authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data);
             if (authAccountTask.isSuccessful()) {
-                Intent intents = new Intent(AccountKit.this,ListActivity.class);
-                startActivity(intents);
+//                Intent intents = new Intent(AccountKit.this,ProfileActivity.class);
+//                startActivity(intents);
                 AuthAccount authAccount = authAccountTask.getResult();
                 Log.i("truong", "idToken:" + authAccount.getIdToken());
             } else {
@@ -45,4 +50,5 @@ public class AccountKit extends AppCompatActivity {
             }
         }
     }
+
 }

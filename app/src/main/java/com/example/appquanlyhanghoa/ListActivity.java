@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView rcvObj;
     private Obj_adapter mObjAdapter;
     private List<Obj> mlistObj;
+    private SearchView search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,7 @@ public class ListActivity extends AppCompatActivity {
 
         Anhxa();
         dieukhienNut();
-        getdata();
+        getdata("");
         BottomNavigationView mNavView = findViewById(R.id.botom_nav);
 
         mNavView.setSelectedItemId(R.id.list);
@@ -73,6 +77,21 @@ public class ListActivity extends AppCompatActivity {
                         return true;
 
                 }
+                return false;
+            }
+        });
+
+        //Tìm kiếm
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                getdata(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getdata(newText);
                 return false;
             }
         });
@@ -147,7 +166,8 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
-    private void getdata(){
+
+    private void getdata(String keyword){
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
@@ -157,7 +177,11 @@ public class ListActivity extends AppCompatActivity {
                 mlistObj.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Obj obj = dataSnapshot.getValue(Obj.class);
-                    mlistObj.add(obj);
+                    if(obj != null){
+                        if( obj.getName().contains(keyword)){
+                            mlistObj.add(obj);
+                        }
+                    }
                 }
                 mObjAdapter.notifyDataSetChanged();
             }
@@ -171,7 +195,8 @@ public class ListActivity extends AppCompatActivity {
 
     private void Anhxa() {
         btaddadapter = findViewById(R.id.buttonadd);
-
+        //Nút tìm kiếm
+        search = findViewById(R.id.seachView);
         rcvObj = findViewById(R.id.rcvObj);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvObj.setLayoutManager(linearLayoutManager);
@@ -181,7 +206,8 @@ public class ListActivity extends AppCompatActivity {
 
         mlistObj = new ArrayList<>();
         mObjAdapter = new Obj_adapter(mlistObj);
-
         rcvObj.setAdapter(mObjAdapter);
     }
+
+
 }
