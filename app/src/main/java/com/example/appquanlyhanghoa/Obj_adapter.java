@@ -47,36 +47,6 @@ public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder
         }
         return 0;
     }
-// tim kiem ten san pham
-//    @Override
-//    public Filter getFilter() {
-//        return new Filter() {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence charSequence) {
-//                String searchview = charSequence.toString();
-//                if(searchview.isEmpty()){
-//                    mListObj = mListOld;
-//                }else{
-//                    List<Obj> list = new ArrayList<>();
-//                    for(Obj obj : mListOld){
-//                        if (obj.getName().toLowerCase().contains(searchview.toLowerCase())){
-//                                list.add(obj);
-//                        }
-//                    }
-//                    mListObj = list;
-//                }
-//                FilterResults filterResults = new FilterResults();
-//                filterResults.values = mListObj;
-//                return null;
-//            }
-//
-//            @Override
-//            protected void publishResults(CharSequence charSequence, FilterResults results) {
-//                mListObj = (List<Obj>)results.values;
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 
     public  class UserViewHolder extends RecyclerView.ViewHolder{
 
