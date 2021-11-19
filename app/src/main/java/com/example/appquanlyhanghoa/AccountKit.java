@@ -40,8 +40,8 @@ public class AccountKit extends AppCompatActivity {
         if (requestCode == 8888) {
             Task<AuthAccount> authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data);
             if (authAccountTask.isSuccessful()) {
-//                Intent intents = new Intent(AccountKit.this,ProfileActivity.class);
-//                startActivity(intents);
+                Intent intents = new Intent(AccountKit.this,ProfileActivity.class);
+                startActivity(intents);
                 AuthAccount authAccount = authAccountTask.getResult();
                 Log.i("truong", "idToken:" + authAccount.getIdToken());
             } else {

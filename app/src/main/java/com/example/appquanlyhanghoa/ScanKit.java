@@ -44,8 +44,7 @@ public class ScanKit extends AppCompatActivity {
             ScanUtil.startScan(ScanKit.this, REQUEST_CODE_SCAN, new
                     HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE,
                     HmsScan.CODE128_SCAN_TYPE).create());
-            Back();
-
+            //onBackPressed();
         }
     }
     @Override
@@ -65,9 +64,8 @@ public class ScanKit extends AppCompatActivity {
 
             }
         }
-
     }
-    public void Back(){
+    public void onBackPressed(){
         super.onBackPressed();
     }
 
