@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -191,6 +194,53 @@ public class ListActivity extends AppCompatActivity {
                 Toast.makeText(ListActivity.this, "LẤY DỮ LIỆU THẤT BẠI", Toast.LENGTH_SHORT).show();
             }
         });
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Obj obj = snapshot.getValue(Obj.class);
+                if(obj == null || mlistObj == null || mlistObj.isEmpty()){
+                    return;
+                }
+                for (int i=0; i<mlistObj.size(); i++){
+                    if(obj.getID()==mlistObj.get(i).getID()){
+                        mlistObj.set(i,obj);
+                        break;
+                    }
+                }
+                mObjAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                Obj obj = snapshot.getValue(Obj.class);
+                if(obj == null || mlistObj == null || mlistObj.isEmpty()){
+                    return;
+                }
+                for (int i=0; i<mlistObj.size(); i++){
+                    if(obj.getID()==mlistObj.get(i).getID()){
+                        mlistObj.remove(mlistObj.get(i));
+                        break;
+                    }
+                }
+                mObjAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ListActivity.this, "Chỉnh sửa thất bại", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void Anhxa() {
@@ -205,9 +255,96 @@ public class ListActivity extends AppCompatActivity {
         rcvObj.addItemDecoration(dividerItemDecoration);
 
         mlistObj = new ArrayList<>();
-        mObjAdapter = new Obj_adapter(mlistObj);
+        mObjAdapter = new Obj_adapter(mlistObj, new Obj_adapter.IClickListener() {
+            @Override
+            public void OnClickUpdateItem(Obj obj) {
+                openDialogUpdateItem(obj);
+            }
+
+            @Override
+            public void OnClickDeleteItem(Obj obj) {
+                onClickDeleteData(obj);
+            }
+        });
         rcvObj.setAdapter(mObjAdapter);
     }
 
+    private void openDialogUpdateItem (Obj obj){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_updatelist);
+
+        Window window = dialog.getWindow();
+        if(window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        WindowManager.LayoutParams windowAtributes = window.getAttributes();
+        window.setAttributes(windowAtributes);
+        dialog.setCancelable(false);
+
+        EditText edtUpdateName = dialog.findViewById(R.id.edt_name);
+        EditText edtUpdateType= dialog.findViewById(R.id.edt_type);
+        EditText edtUpdateQuantity = dialog.findViewById(R.id.edt_quantity);
+        EditText edtUpdateUnit = dialog.findViewById(R.id.edt_unit);
+        EditText edtUpdateDscribe = dialog.findViewById(R.id.edt_dscribe);
+        Button btnCancel = dialog.findViewById(R.id.btn_Cancel);
+        Button btnUp = dialog.findViewById(R.id.btn_Update);
+
+        edtUpdateName.setText(obj.getName());
+        edtUpdateType.setText(obj.getType());
+        edtUpdateQuantity.setText(""+obj.getQuantity());
+        edtUpdateUnit.setText(obj.getUnit());
+        edtUpdateDscribe.setText(obj.getDscribe());
+
+
+       btnCancel.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               dialog.dismiss();
+           }
+       });
+        btnUp.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               FirebaseDatabase database   = FirebaseDatabase.getInstance();
+               DatabaseReference myRef = database.getReference("list_object");
+               String newName = edtUpdateName.getText().toString().trim();
+               obj.setName(newName);
+               String newType= edtUpdateType.getText().toString().trim();
+               obj.setType(newType);
+               int newQuantity = Integer.parseInt(edtUpdateQuantity.getText().toString().trim());
+               obj.setQuantity(newQuantity);
+               String newUnit = edtUpdateUnit.getText().toString().trim();
+               obj.setUnit(newUnit);
+               String newDscribe= edtUpdateDscribe.getText().toString().trim();
+               obj.setDscribe(newDscribe);
+               myRef.child(String.valueOf(obj.getID())).updateChildren(obj.toMap(), new DatabaseReference.CompletionListener() {
+                   @Override
+                   public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                       Toast.makeText(ListActivity.this, "Chỉnh sửa thành công ", Toast.LENGTH_SHORT).show();
+                       dialog.dismiss();
+                   }
+               });
+           }
+       });
+
+       dialog.show();
+    }
+    private void onClickDeleteData(Obj obj){
+        new AlertDialog.Builder(this).setTitle(getString(R.string.app_name)).setMessage("Bạn có chắc muốn xóa bản ghi này?").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FirebaseDatabase database   = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("list_object");
+                myRef.child(String.valueOf(obj.getID())).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        Toast.makeText(ListActivity.this, "Xóa thành công ", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        })
+        .setNegativeButton("Cancel",null).show();
+    }
 
 }

@@ -3,6 +3,7 @@ package com.example.appquanlyhanghoa;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -10,14 +11,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder> {
-
+    private IClickListener mIClickListener;
     private List<Obj> mListObj;
-    public Obj_adapter(List<Obj> mListObj){
+
+    public interface IClickListener{
+        void OnClickUpdateItem(Obj obj);
+        void OnClickDeleteItem(Obj obj);
+    }
+    public Obj_adapter(List<Obj> mListObj,IClickListener listener){
         this.mListObj = mListObj;
+        this.mIClickListener = listener;
     }
     @NonNull
     @Override
@@ -38,6 +47,18 @@ public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder
         holder.tvquantity.setText("Quantity: "+ obj.getQuantity());
         holder.tvunit.setText("Unit: "+ obj.getUnit());
         holder.tvdscribe.setText("Description: "+ obj.getDscribe());
+        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mIClickListener.OnClickUpdateItem(obj);
+            }
+        });
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mIClickListener.OnClickDeleteItem(obj);
+            }
+        });
     }
 
     @Override
@@ -49,7 +70,8 @@ public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder
     }
 
     public  class UserViewHolder extends RecyclerView.ViewHolder{
-
+        private Button btnUpdate;
+        private FloatingActionButton btnDelete;
         private TextView tvid, tvname,tvquantity, tvtype, tvunit, tvdscribe;
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +81,8 @@ public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder
             tvtype = itemView.findViewById(R.id.tvtype_objadapter);
             tvunit = itemView.findViewById(R.id.tvunit_objadapter);
             tvdscribe = itemView.findViewById(R.id.tvdscribe_objadapter);
+            btnUpdate = itemView.findViewById(R.id.btnUpdate);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
 
         }
     }

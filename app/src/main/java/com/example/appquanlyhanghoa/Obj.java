@@ -1,5 +1,9 @@
 package com.example.appquanlyhanghoa;
 
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Obj {
     private int id, quantity;
 
@@ -59,4 +63,14 @@ public class Obj {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+        public Map<String,Object> toMap(){
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("name",name );
+        result.put("type",type);
+        result.put("quantity",quantity);
+        result.put("unit",unit);
+        result.put("dscribe",dscribe);
+        return result;
+    }
+
 }
