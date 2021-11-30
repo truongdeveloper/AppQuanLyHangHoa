@@ -32,14 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ScanKit"
             android:exported="true" />
         <activity
             android:name=".AccountKit"
             android:exported="true"/>
-
     </application>
 
 </manifest>

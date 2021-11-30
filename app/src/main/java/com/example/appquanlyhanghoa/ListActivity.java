@@ -56,6 +56,32 @@ public class ListActivity extends AppCompatActivity {
         Anhxa();
         dieukhienNut();
         getdata("");
+        int mamathang = getIntent().getIntExtra("maQr",0);
+        if(mamathang!=0){
+            FirebaseDatabase database   = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("list_object");
+
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    mlistObj.clear();
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Obj obj = dataSnapshot.getValue(Obj.class);
+                        if(obj != null){
+                            if( obj.getID() == mamathang){
+                                mlistObj.add(obj);
+                            }
+                        }
+                    }
+                    mObjAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(ListActivity.this, "LẤY DỮ LIỆU THẤT BẠI", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         BottomNavigationView mNavView = findViewById(R.id.botom_nav);
 
         mNavView.setSelectedItemId(R.id.list);
