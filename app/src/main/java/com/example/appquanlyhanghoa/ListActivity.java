@@ -200,7 +200,7 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
-//        Query query = myRef.orderByChild("name");
+       // Query query = myRef.orderByChild("quantity");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

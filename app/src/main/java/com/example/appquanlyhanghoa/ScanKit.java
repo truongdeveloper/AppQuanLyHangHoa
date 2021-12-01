@@ -3,7 +3,6 @@ package com.example.appquanlyhanghoa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -44,7 +43,6 @@ public class ScanKit extends AppCompatActivity {
             ScanUtil.startScan(ScanKit.this, REQUEST_CODE_SCAN, new
                     HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE,
                     HmsScan.CODE128_SCAN_TYPE).create());
-//            onBackPressed();
         }
     }
     @Override
@@ -58,8 +56,12 @@ public class ScanKit extends AppCompatActivity {
 
             if (obj instanceof HmsScan) {
                 if (!TextUtils.isEmpty(((HmsScan) obj).getOriginalValue())) {
+                    int id = Integer.parseInt(((HmsScan) obj).getOriginalValue());
                     Toast.makeText(this, ((HmsScan) obj).getOriginalValue(), Toast.LENGTH_SHORT).show();
-                    ScanKit.this.finish();
+                    Intent intent = new Intent(ScanKit.this, ListActivity.class);
+                    intent.putExtra("maQr",id);
+                    startActivity(intent);
+                    onBackPressed();
                 }
 
             }
