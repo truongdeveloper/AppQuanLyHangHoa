@@ -200,6 +200,7 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
+//        Query query = myRef.orderByChild("name");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -220,10 +221,15 @@ public class ListActivity extends AppCompatActivity {
                 Toast.makeText(ListActivity.this, "LẤY DỮ LIỆU THẤT BẠI", Toast.LENGTH_SHORT).show();
             }
         });
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                Obj obj = snapshot.getValue(Obj.class);
+                if(obj == null ){
+                    mlistObj.add(obj);
+                    mObjAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
