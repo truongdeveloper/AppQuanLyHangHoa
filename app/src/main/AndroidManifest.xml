@@ -25,19 +25,24 @@
             android:exported="true" />
         <activity
             android:name=".ListActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".ScanKit"
             android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".AccountKit"-->
+<!--            android:exported="true" />-->
         <activity
-            android:name=".AccountKit"
-            android:exported="true"/>
+            android:name=".DangNhap"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

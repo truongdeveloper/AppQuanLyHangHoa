@@ -12,11 +12,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update List"
-            android:background="@color/purple_700"
-            android:padding="12dp"
+            android:text="CHỈNH SỬA THÔNG TIN"
             android:gravity="center"
-            android:textColor="@color/white"/>
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_700" />
         <EditText
             android:id="@+id/edt_name"
             android:layout_width="match_parent"
@@ -60,14 +60,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Update"
+                android:text="OK"
                 android:layout_marginRight="10dp"/>
             <Button
                 android:id="@+id/btn_Cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cancel"/>
+                android:text="Thoát"/>
 
         </LinearLayout>
     </LinearLayout>

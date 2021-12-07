@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -33,7 +30,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -48,6 +44,7 @@ public class ListActivity extends AppCompatActivity {
     private Obj_adapter mObjAdapter;
     private List<Obj> mlistObj;
     private SearchView search;
+    private String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +135,7 @@ public class ListActivity extends AppCompatActivity {
     private void clickAdd(int gravity){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_addlist);
+        dialog.setContentView(R.layout.dialog_addlist);
 
         Window window = dialog.getWindow();
         if(window == null)
@@ -162,6 +159,7 @@ public class ListActivity extends AppCompatActivity {
         edtquantity = dialog.findViewById(R.id.edittextquantity);
         edtdscribe = dialog.findViewById(R.id.edittextdscribe);
         btokaddlist = dialog.findViewById(R.id.buttonokaddlist);
+        Button btthoat = dialog.findViewById(R.id.buttonthoat);
 
         btokaddlist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +173,12 @@ public class ListActivity extends AppCompatActivity {
                 Obj obj = new Obj(id,name,quantity,type,unit,dscribe);
 
                 clickPush(obj);
+                dialog.cancel();
+            }
+        });
+        btthoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dialog.cancel();
             }
         });
@@ -201,6 +205,7 @@ public class ListActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("list_object");
 
        // Query query = myRef.orderByChild("quantity");
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -208,6 +213,7 @@ public class ListActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Obj obj = dataSnapshot.getValue(Obj.class);
                     if(obj != null){
+//                        String s = String.valueOf(obj.getID());
                         if( obj.getName().contains(keyword)){
                             mlistObj.add(obj);
                         }
@@ -304,7 +310,7 @@ public class ListActivity extends AppCompatActivity {
     private void openDialogUpdateItem (Obj obj){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_updatelist);
+        dialog.setContentView(R.layout.diaglog_updatelist);
 
         Window window = dialog.getWindow();
         if(window == null)

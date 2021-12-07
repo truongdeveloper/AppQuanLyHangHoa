@@ -3,6 +3,7 @@ package com.example.appquanlyhanghoa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -43,6 +44,7 @@ public class ScanKit extends AppCompatActivity {
             ScanUtil.startScan(ScanKit.this, REQUEST_CODE_SCAN, new
                     HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE,
                     HmsScan.CODE128_SCAN_TYPE).create());
+//            onBackPressed();
         }
     }
     @Override

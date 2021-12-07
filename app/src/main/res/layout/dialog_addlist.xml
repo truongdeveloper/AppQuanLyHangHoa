@@ -5,6 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="THÊM SẢN PHẨM"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_700" />
+
     <EditText
         android:id="@+id/edittextID"
         android:layout_width="match_parent"
@@ -41,10 +51,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="mô tả:" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/buttonokaddlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_gravity="center"
+        android:layout_marginRight="10dp"
         android:text="OK" />
+    <Button
+        android:id="@+id/buttonthoat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:text="Thoát"/>
+    </LinearLayout>
 </LinearLayout>

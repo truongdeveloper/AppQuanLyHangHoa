@@ -41,12 +41,12 @@ public class Obj_adapter extends RecyclerView.Adapter<Obj_adapter.UserViewHolder
         if(obj == null){
             return;
         }
-        holder.tvid.setText("ID: "+ obj.getID());
-        holder.tvname.setText("Name: "+ obj.getName());
-        holder.tvtype.setText("Type: "+ obj.getType());
-        holder.tvquantity.setText("Quantity: "+ obj.getQuantity());
-        holder.tvunit.setText("Unit: "+ obj.getUnit());
-        holder.tvdscribe.setText("Description: "+ obj.getDscribe());
+        holder.tvid.setText(""+ obj.getID());
+        holder.tvname.setText("   Tên: "+ obj.getName());
+        holder.tvtype.setText("   Loại: "+ obj.getType());
+        holder.tvquantity.setText("   Số lượng : "+ obj.getQuantity());
+        holder.tvunit.setText("   Đơn vị: "+ obj.getUnit());
+        holder.tvdscribe.setText("   Mô tả: "+ obj.getDscribe());
         holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -6,15 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.huawei.hmf.tasks.OnCompleteListener;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
@@ -31,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        showUserInformation();
         findViewById(R.id.dangxuat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +45,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         BottomNavigationView mNavView = findViewById(R.id.botom_nav);
+
+
 
         mNavView.setSelectedItemId(R.id.logout);
 
@@ -68,18 +75,19 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
     private void signOut() {
-        Task<Void> signOutTask = mAuthService.signOut();
-        signOutTask.addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.i("truong", "signOut Success");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Log.i("truong", "signOut fail");
-            }
-        });
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, DangNhap.class);
+        startActivity(intent);
+        finish();
     }
 
+    private void showUserInformation(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        TextView tvEmail = findViewById(R.id.textviewemail);
+        if(user == null){
+            return;
+        }
+        String email = user.getEmail();
+        tvEmail.setText(email);
+    }
 }
