@@ -164,16 +164,88 @@ public class ListActivity extends AppCompatActivity {
         btokaddlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int id   = Integer.parseInt(edtID.getText().toString().trim());
-                int quantity   = Integer.parseInt(edtquantity.getText().toString().trim());
+
+                int id;
+                int quantity;
                 String name = edtname.getText().toString().trim();
                 String type = edttype.getText().toString().trim();
                 String unit = edtunit.getText().toString().trim();
                 String dscribe= edtdscribe.getText().toString().trim();
-                Obj obj = new Obj(id,name,quantity,type,unit,dscribe);
 
-                clickPush(obj);
-                dialog.cancel();
+                if(edtID.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long dien id", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    id = Integer.parseInt(edtID.getText().toString().trim());
+                }
+
+                if(edtquantity.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long dien id", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    quantity = Integer.parseInt(edtquantity.getText().toString().trim());
+                }
+
+                if(name.equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long dien ten", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(type.equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long nhap type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(unit.equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long nhap unit", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(dscribe.equalsIgnoreCase("")){
+                    Toast.makeText(ListActivity.this, "Vui long nhap dscribe", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+        // cau 1
+//                for(Obj value: mlistObj) {
+//                    if (name.equalsIgnoreCase(value.getName())) {
+//                        Toast.makeText(ListActivity.this, "Trung ten", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+//                }
+
+
+                // cau 2
+               int dem =0;
+//                for(Obj value: mlistObj){
+//                    if(name.equalsIgnoreCase(value.getName())){
+//                        dem = 1;
+//                        // thong bao
+//                        new AlertDialog.Builder(ListActivity.this).setTitle(getString(R.string.app_name)).setMessage("Ban co muon cong sl sp?").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                int soluong = quantity;
+//                                soluong += value.getQuantity();
+//                                Obj obj = new Obj(value.getID(),name,soluong,type,unit,dscribe);
+//                                clickPush(obj);
+//                                dialog.cancel();
+//                            }
+//                        })
+//                                .setNegativeButton("Khong", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//                                        Toast.makeText(ListActivity.this, "Vui long doi ten", Toast.LENGTH_SHORT).show();
+//                                        return;
+//                                    }
+//                                }).show();
+//                    }
+//                }
+
+                if(dem==0){
+                    Obj obj = new Obj(id,name,quantity,type,unit,dscribe);
+                    clickPush(obj);
+                    dialog.cancel();
+
+                }
+
             }
         });
         btthoat.setOnClickListener(new View.OnClickListener() {
