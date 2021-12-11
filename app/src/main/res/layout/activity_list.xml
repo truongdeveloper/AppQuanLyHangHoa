@@ -20,11 +20,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <EditText-->
+<!--                android:id="@+id/edtu"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="2"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:hint="Từ" />-->
+<!--            <EditText-->
+<!--                android:id="@+id/edden"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="2"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:hint="Đến" />-->
+<!--            <Button-->
+<!--                android:id="@+id/timsl"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Tìm"/>-->
+<!--        </LinearLayout>-->
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvObj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_marginBottom="20dp"
+            ></androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

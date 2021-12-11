@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -45,6 +46,9 @@ public class ListActivity extends AppCompatActivity {
     private List<Obj> mlistObj;
     private SearchView search;
     private String s;
+    private EditText edtu,edden;
+    private Button timsl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +74,13 @@ public class ListActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    if(mlistObj.isEmpty()){
+                        Toast.makeText(ListActivity.this, "không có mặt hàng nào có mã này", Toast.LENGTH_SHORT).show();
+                        clickAdd(Gravity.CENTER);
+                    }
                     mObjAdapter.notifyDataSetChanged();
                 }
+
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -133,6 +142,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void clickAdd(int gravity){
+        //Toast.makeText(ListActivity.this, gravity, Toast.LENGTH_SHORT).show();
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_addlist);
@@ -276,9 +286,9 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
-       // Query query = myRef.orderByChild("quantity");
+        Query query = myRef.orderByChild("quantity");
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mlistObj.clear();
@@ -354,6 +364,43 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void Anhxa() {
+
+        // tìm sl
+//        edtu = findViewById(R.id.edtu);
+//        edden = findViewById(R.id.edden);
+//        timsl = findViewById(R.id.timsl);
+//
+//        timsl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ArrayList<Obj> listsl = new ArrayList<>();
+//                listsl.clear();
+//                for(Obj value: mlistObj){
+//                    if(edtu.getText().toString().equalsIgnoreCase("") || edden.getText().toString().equalsIgnoreCase("")){
+//                        listsl.add(value);
+//                    }else{
+//                        int tua = Integer.parseInt(edtu.getText().toString());
+//                        int denb = Integer.parseInt(edden.getText().toString());
+//                        if(tua<=value.getQuantity() && denb>=value.getQuantity()){
+//                            listsl.add(value);
+//                        }
+//                    }
+//                }
+//                mObjAdapter = new Obj_adapter(listsl, new Obj_adapter.IClickListener() {
+//                    @Override
+//                    public void OnClickUpdateItem(Obj obj) {
+//                        openDialogUpdateItem(obj);
+//                    }
+//
+//                    @Override
+//                    public void OnClickDeleteItem(Obj obj) {
+//                        onClickDeleteData(obj);
+//                    }
+//                });
+//                rcvObj.setAdapter(mObjAdapter);
+//            }
+//        });
+
         btaddadapter = findViewById(R.id.buttonadd);
         //Nút tìm kiếm
         search = findViewById(R.id.seachView);
