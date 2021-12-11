@@ -214,7 +214,7 @@ public class ListActivity extends AppCompatActivity {
                     Toast.makeText(ListActivity.this, "Vui long nhap dscribe", Toast.LENGTH_SHORT).show();
                     return;
                 }
-        // cau 1
+        // cau 1 check trung
 //                for(Obj value: mlistObj) {
 //                    if (name.equalsIgnoreCase(value.getName())) {
 //                        Toast.makeText(ListActivity.this, "Trung ten", Toast.LENGTH_SHORT).show();
@@ -223,13 +223,13 @@ public class ListActivity extends AppCompatActivity {
 //                }
 
 
-                // cau 2
+                // cau 2 check trung cong so luong
                int dem =0;
 //                for(Obj value: mlistObj){
 //                    if(name.equalsIgnoreCase(value.getName())){
 //                        dem = 1;
 //                        // thong bao
-//                        new AlertDialog.Builder(ListActivity.this).setTitle(getString(R.string.app_name)).setMessage("Ban co muon cong sl sp?").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                        new AlertDialog.Builder(ListActivity.this).setTitle(getString(R.string.app_name)).setMessage("SẢN PHẨM ĐÃ CÓ bạn có muốn cộng thêm vào sản phẩm?").setPositiveButton("Có", new DialogInterface.OnClickListener() {
 //                            @Override
 //                            public void onClick(DialogInterface dialogInterface, int i) {
 //                                int soluong = quantity;
@@ -239,10 +239,10 @@ public class ListActivity extends AppCompatActivity {
 //                                dialog.cancel();
 //                            }
 //                        })
-//                                .setNegativeButton("Khong", new DialogInterface.OnClickListener() {
+//                                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
 //                                    @Override
 //                                    public void onClick(DialogInterface dialogInterface, int i) {
-//                                        Toast.makeText(ListActivity.this, "Vui long doi ten", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(ListActivity.this, "Vui lòng đổi tên", Toast.LENGTH_SHORT).show();
 //                                        return;
 //                                    }
 //                                }).show();
@@ -253,9 +253,7 @@ public class ListActivity extends AppCompatActivity {
                     Obj obj = new Obj(id,name,quantity,type,unit,dscribe);
                     clickPush(obj);
                     dialog.cancel();
-
                 }
-
             }
         });
         btthoat.setOnClickListener(new View.OnClickListener() {
@@ -286,16 +284,43 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
-        Query query = myRef.orderByChild("quantity");
+//        Button sapxep = findViewById(R.id.sapxep);
+//        sapxep.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Query query = myRef.orderByChild("name");
+//                query.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        mlistObj.clear();
+//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                            Obj obj = dataSnapshot.getValue(Obj.class);
+//                            if(obj != null){
+//                                //String s = String.valueOf(obj.getID());
+//                                if( obj.getName().contains(keyword)){
+//                                    mlistObj.add(obj);
+//                                }
+//                            }
+//                        }
+//                        mObjAdapter.notifyDataSetChanged();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Toast.makeText(ListActivity.this, "LẤY DỮ LIỆU THẤT BẠI", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
 
-        query.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mlistObj.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Obj obj = dataSnapshot.getValue(Obj.class);
                     if(obj != null){
-//                        String s = String.valueOf(obj.getID());
+                        //String s = String.valueOf(obj.getID());
                         if( obj.getName().contains(keyword)){
                             mlistObj.add(obj);
                         }
@@ -365,7 +390,7 @@ public class ListActivity extends AppCompatActivity {
 
     private void Anhxa() {
 
-        // tìm sl
+        // tìm sl theo khoang
 //        edtu = findViewById(R.id.edtu);
 //        edden = findViewById(R.id.edden);
 //        timsl = findViewById(R.id.timsl);
