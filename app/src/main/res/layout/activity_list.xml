@@ -15,47 +15,66 @@
         android:layout_marginRight="5dp"
         android:orientation="vertical">
 
-        <SearchView
-            android:id="@+id/seachView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-<!--        nút sắp xếp-->
-<!--        <Button-->
-<!--            android:id="@+id/sapxep"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_gravity="left"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            android:textColor="@color/purple_700"-->
-<!--            android:textSize="10dp"-->
-<!--            android:text="Sắp xếp"/>-->
+        <!--        tìm kiếm -->
+        <!--        <SearchView-->
+        <!--            android:id="@+id/seachView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content" />-->
 
-<!--        nút tìm khoảng số lượng-->
+        <!--        nút sắp xếp-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+        <!--            <Button-->
+        <!--                android:id="@+id/sapxep"-->
+        <!--                android:layout_width="100dp"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_gravity="left"-->
+        <!--                android:backgroundTint="@color/white"-->
+        <!--                android:text="Sắp xếp A-Z"-->
+        <!--                android:textColor="@color/purple_700"-->
+        <!--                android:textSize="10dp" />-->
+        <!--            <Button-->
+        <!--                android:id="@+id/sxthg"-->
+        <!--                android:layout_width="100dp"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:layout_gravity="left"-->
+        <!--                android:backgroundTint="@color/white"-->
+        <!--                android:text="Sắp xếp thường"-->
+        <!--                android:textColor="@color/purple_700"-->
+        <!--                android:textSize="10dp" />-->
+        <!--        </LinearLayout>-->
+
+        <!--nút tìm khoảng số lượng-->
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:orientation="horizontal">-->
+
 <!--            <EditText-->
 <!--                android:id="@+id/edtu"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="2"-->
 <!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_weight="2"-->
 <!--                android:hint="Từ" />-->
+
 <!--            <EditText-->
 <!--                android:id="@+id/edden"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="2"-->
 <!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_weight="2"-->
 <!--                android:hint="Đến" />-->
+
 <!--            <Button-->
 <!--                android:id="@+id/timsl"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
 <!--                android:layout_gravity="center"-->
-<!--                android:text="Tìm"/>-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Tìm" />-->
 <!--        </LinearLayout>-->
 
 
@@ -63,9 +82,7 @@
             android:id="@+id/rcvObj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            ></androidx.recyclerview.widget.RecyclerView>
-
+            android:layout_marginBottom="20dp"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 

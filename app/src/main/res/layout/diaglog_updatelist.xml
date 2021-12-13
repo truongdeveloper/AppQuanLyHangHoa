@@ -17,11 +17,12 @@
             android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="@color/purple_700" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20px"
-            android:text="Tên mới:"/>
+<!--        cau1 t-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingLeft="20px"-->
+<!--            android:text="Tên mới:"/>-->
         <EditText
             android:id="@+id/edt_name"
             android:layout_width="match_parent"

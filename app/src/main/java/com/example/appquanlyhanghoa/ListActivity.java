@@ -46,8 +46,6 @@ public class ListActivity extends AppCompatActivity {
     private List<Obj> mlistObj;
     private SearchView search;
     private String s;
-    private EditText edtu,edden;
-    private Button timsl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,20 +114,21 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        //Tìm kiếm
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                getdata(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                getdata(newText);
-                return false;
-            }
-        });
+        //TÌM KIẾM
+//        search = findViewById(R.id.seachView);
+//        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                getdata(query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                getdata(newText);
+//                return false;
+//            }
+//        });
 
     }
     private void dieukhienNut() {
@@ -190,7 +189,7 @@ public class ListActivity extends AppCompatActivity {
                 }
 
                 if(edtquantity.getText().toString().trim().equalsIgnoreCase("")){
-                    Toast.makeText(ListActivity.this, "Vui long dien id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListActivity.this, "Vui long dien so luong", Toast.LENGTH_SHORT).show();
                     return;
                 }else{
                     quantity = Integer.parseInt(edtquantity.getText().toString().trim());
@@ -202,52 +201,53 @@ public class ListActivity extends AppCompatActivity {
                 }
 
                 if(type.equalsIgnoreCase("")){
-                    Toast.makeText(ListActivity.this, "Vui long nhap type", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListActivity.this, "Vui long nhap loai", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(unit.equalsIgnoreCase("")){
-                    Toast.makeText(ListActivity.this, "Vui long nhap unit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListActivity.this, "Vui long nhap don vi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if(dscribe.equalsIgnoreCase("")){
-                    Toast.makeText(ListActivity.this, "Vui long nhap dscribe", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListActivity.this, "Vui long nhap mo ta", Toast.LENGTH_SHORT).show();
                     return;
                 }
         // cau 1 check trung
 //                for(Obj value: mlistObj) {
 //                    if (name.equalsIgnoreCase(value.getName())) {
-//                        Toast.makeText(ListActivity.this, "Trung ten", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ListActivity.this, "TRÙNG TÊN", Toast.LENGTH_SHORT).show();
 //                        return;
 //                    }
 //                }
 
 
-                // cau 2 check trung cong so luong
+
                int dem =0;
-//                for(Obj value: mlistObj){
-//                    if(name.equalsIgnoreCase(value.getName())){
-//                        dem = 1;
-//                        // thong bao
-//                        new AlertDialog.Builder(ListActivity.this).setTitle(getString(R.string.app_name)).setMessage("SẢN PHẨM ĐÃ CÓ bạn có muốn cộng thêm vào sản phẩm?").setPositiveButton("Có", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                int soluong = quantity;
-//                                soluong += value.getQuantity();
-//                                Obj obj = new Obj(value.getID(),name,soluong,type,unit,dscribe);
-//                                clickPush(obj);
-//                                dialog.cancel();
-//                            }
-//                        })
-//                                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialogInterface, int i) {
-//                                        Toast.makeText(ListActivity.this, "Vui lòng đổi tên", Toast.LENGTH_SHORT).show();
-//                                        return;
-//                                    }
-//                                }).show();
-//                    }
+            // cau 2 check trung cong so luong
+//            for(Obj value: mlistObj){
+//                if(name.equalsIgnoreCase(value.getName())){
+//                    dem = 1;
+//                    // thong bao
+//                    new AlertDialog.Builder(ListActivity.this).setTitle(getString(R.string.app_name)).setMessage("SẢN PHẨM ĐÃ CÓ bạn có muốn cộng thêm vào sản phẩm?").setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            int soluong = quantity;
+//                            soluong += value.getQuantity();
+//                            Obj obj = new Obj(value.getID(),name,soluong,type,unit,dscribe);
+//                            clickPush(obj);
+//                            dialog.cancel();
+//                        }
+//                    })
+//                            .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//                                    Toast.makeText(ListActivity.this, "Vui lòng đổi tên", Toast.LENGTH_SHORT).show();
+//                                    return;
+//                                }
+//                            }).show();
 //                }
+//            }
 
                 if(dem==0){
                     Obj obj = new Obj(id,name,quantity,type,unit,dscribe);
@@ -284,11 +284,12 @@ public class ListActivity extends AppCompatActivity {
         FirebaseDatabase database   = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("list_object");
 
+        //SẮP XẾP
 //        Button sapxep = findViewById(R.id.sapxep);
 //        sapxep.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Query query = myRef.orderByChild("name");
+//                Query query = myRef.orderByChild("name"); // thay doi cach sap xep
 //                query.addValueEventListener(new ValueEventListener() {
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -312,6 +313,35 @@ public class ListActivity extends AppCompatActivity {
 //                });
 //            }
 //        });
+//
+//        Button sxthg = findViewById(R.id.sxthg);
+//        sxthg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Query query = myRef.orderByChild("id"); // thay doi cach sap xep
+//                query.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        mlistObj.clear();
+//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                            Obj obj = dataSnapshot.getValue(Obj.class);
+//                            if(obj != null){
+//                                //String s = String.valueOf(obj.getID());
+//                                if( obj.getName().contains(keyword)){
+//                                    mlistObj.add(obj);
+//                                }
+//                            }
+//                        }
+//                        mObjAdapter.notifyDataSetChanged();
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Toast.makeText(ListActivity.this, "LẤY DỮ LIỆU THẤT BẠI", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
+
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -320,8 +350,8 @@ public class ListActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Obj obj = dataSnapshot.getValue(Obj.class);
                     if(obj != null){
-                        //String s = String.valueOf(obj.getID());
-                        if( obj.getName().contains(keyword)){
+                        String s = String.valueOf(obj.getName()); // THAY ĐỔI TÌM KIẾM
+                        if( s.contains(keyword)){
                             mlistObj.add(obj);
                         }
                     }
@@ -390,10 +420,10 @@ public class ListActivity extends AppCompatActivity {
 
     private void Anhxa() {
 
-        // tìm sl theo khoang
-//        edtu = findViewById(R.id.edtu);
-//        edden = findViewById(R.id.edden);
-//        timsl = findViewById(R.id.timsl);
+//         tìm sl theo khoang
+//        EditText edtu = findViewById(R.id.edtu);
+//        EditText edden = findViewById(R.id.edden);
+//        Button timsl = findViewById(R.id.timsl);
 //
 //        timsl.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -428,7 +458,7 @@ public class ListActivity extends AppCompatActivity {
 
         btaddadapter = findViewById(R.id.buttonadd);
         //Nút tìm kiếm
-        search = findViewById(R.id.seachView);
+
         rcvObj = findViewById(R.id.rcvObj);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvObj.setLayoutManager(linearLayoutManager);
